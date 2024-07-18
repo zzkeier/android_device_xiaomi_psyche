@@ -28,7 +28,7 @@ vendor.audio_hal.period_multiplier=3
 vendor.audio.offload.buffer.size.kb=32
 
 # Audio hardware
-ro.hardware.audio.primary=umi
+ro.hardware.audio.primary=psyche
 
 # Display
 ro.surface_flinger.set_touch_timer_ms=200

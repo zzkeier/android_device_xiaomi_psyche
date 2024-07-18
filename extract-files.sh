@@ -11,9 +11,20 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             sed -i "/seclabel u:r:batterysecret:s0/d" "${2}"
             ;;
-        vendor/lib/hw/audio.primary.umi.so)
+        vendor/lib/hw/audio.primary.psyche.so)
             [ "$2" = "" ] && return 0
-            sed -i "s|/vendor/lib/liba2dpoffload\.so|liba2dpoffload_umi\.so\x00\x00\x00\x00\x00\x00\x00\x00" "${2}"
+            sed -i "s|/vendor/lib/liba2dpoffload\.so|liba2dpoffload_psyche\.so\x00\x00\x00\x00\x00|g" "${2}"
+            ;;
+        vendor/etc/libnfc-nci.conf)
+            grep -q "LEGACY_MIFARE_READER" "${2}" || cat << EOF >> "${2}"
+
+###############################################################################
+# Mifare Tag implementation
+# 0: General implementation
+# 1: Legacy implementation
+LEGACY_MIFARE_READER=1
+###############################################################################
+EOF
             ;;
         vendor/lib64/camera/components/com.mi.node.watermark.so)
             [ "$2" = "" ] && return 0
@@ -43,7 +54,7 @@ fi
 
 set -e
 
-export DEVICE=umi
+export DEVICE=psyche
 export DEVICE_COMMON=sm8250-common
 export VENDOR=xiaomi
 export VENDOR_COMMON=${VENDOR}
