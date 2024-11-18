@@ -33,6 +33,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,qdcm_calib_data_*.xml,$(LOCAL_PATH)/qdcm/,$(TARGET_COPY_OUT_VENDOR)/etc/)
 
+# Fingerprint
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.vendor.fingerprint.type=udfps_optical \
+    persist.vendor.fingerprint.sensor_location=540|2163|107
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
