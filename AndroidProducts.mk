@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/derp_psyche.mk
+    $(LOCAL_DIR)/lineage_psyche.mk
